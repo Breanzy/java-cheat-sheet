@@ -1,0 +1,524 @@
+Basic FYIs
+========================================================================================================================
+
+Libraries
+-----------------------------------------------------------------------------------
+You need libraries for java to use functions. These libraries basically contain pre-written algorithms so you don't have to do the
+hard-coding yourselves. You simply access these ready made functions by declaring the library on top of your class.
+
+Examples of Libraries:
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+import java.util.Random;
+
+
+
+Basic java look example
+-----------------------------------------------------------------------------------------------------------------------
+import java.util.Collections;
+
+public class Main()
+{
+    public static void main(String[] args)
+    {
+        System.out.println("aye");
+    }
+}
+
+
+
+Loops
+-----------------------------------------------------------------------------------------------------------------------
+for (int a = 0; a < 10; a++){}          <=      for loop
+
+while (true) {}                         <=      whole loop
+
+for (int a : array) {}                  <=      for each loop
+
+
+
+Logics
+-----------------------------------------------------------------------------------------------------------------------
+if(true)
+{}
+else if(true)                                       <= if nested
+{}
+else
+
+
+System.out.print( (1 + 1 == 3) ? "aye" : "lmao");   <= single if else logic. (1 + 1 == 3) is argument, ? "aye" if true, : "lmao" if false.
+
+
+switch(test)
+{
+    case 1:  System.out.print("aye"); 
+             break;
+
+    case 2:  System.out.print("lmao"); 
+             break;
+             
+    case true: System.out.print("????");            <= switch logic.  (test)  is a variable. Can be integers, or boolean.
+            break;                                     1 in "case 1" is a condition. Sort of like if(test == 1). Must place break; 
+                                                       in each condition otherwise, it will jump to other cases. default is
+    default: System.out.print("ekszdie");              basically else{}.
+             break;
+}
+
+
+try                                                             <= try function. Tries to execute the following function, and
+{                                                                  when a problem arises, instead of stopping the runtime of the code,
+    int[] a = new int[6];                                          executes catch function.
+    System.out.println(a[6]) // Error since 5 is max size     
+} catch(ArrayIndexOutOfBoundsException e) {
+
+    System.out.println("Out of bounds. Message: " + e);         <= catch function. Jumps here when codes in try function encounters an error
+} finally {
+
+    System.out.println("Function Complete!");                   <= finally function. Executes when try function finishes all its function.
+}                                                                  I mean personally I think it's useless since you can just execute codes
+                                                                   after try is done, but i mean, at least you are aware of its existence, so yeah.
+Classes
+=======================================================================================================================
+
+
+System class methods
+-----------------------------------------------------------------------------------------------------------------------
+System in this context is used for output. System is part of java.lang, and does not need to be imported to be used.
+
+
+System.out.println();                               - Function that prints out output (in newline)
+System.out.print();                                 - Function that prints out output (without newline)
+
+
+
+Math class methods
+-----------------------------------------------------------------------------------------------------------------------
+Math includes all sorts of mathematical functions. It is part of java.lang, and does not need to be imported.
+
+
+Math.round();                   <= Classic rounding, rounds number depending on the nearest decimal number
+Math.floor();                   <= Rounds a number downwards to the nearest integer
+Math.ceil();                    <= Rounds a number upwards to the nearest integer
+
+Scanner class methods
+-----------------------------------------------------------------------------------------------------------------------
+Scanner is used for input
+
+Initializing Scanner class:             import java.util.Scanner;
+Initializing Scanner object:            Scanner Input = new Scanner(System.in);
+
+NOTE: Aside from System class, all classes MUST be initialized, otherwise, Java won't recognize the functions in that class.
+
+Input.next();                                                       - reads a line of string
+Input.next().charAt(int);                                           - takes the character of the string
+Input.nextLine();                                                   - reads a string with spaces
+Input.nextInt, nextFloat, nextBoolean, nextLong, nextDouble();      - reads an integer, float, boolean, or long
+
+
+Scanner tips and tricks:
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+-Note that when using Input.nextLine(); , you should add and extra Input.nextLine(); when you're using a scanner right before it.
+
+Example:
+
+scan.nextInt();             <== With this, nextInt(); will receive a number input, but nextLine will be skipped since after you press enter
+scan.nextLine();                 to finish the integer input, nextLine will misinterpret "Enter" as your whole line.
+
+scan.nextInt();
+scan.nextLine(); // This is ignored
+scan.nextLine();                        <== Instead, you create a double scan.nextLine(); . It's stupid, but if it works, it works.
+
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+To  repeatedly collect inputs in a loop:
+
+Scanner scan = new Scanner(System.in);          <= Input loop - scan.hasNextInt, hasNext, etc. allows you to repeatedly take inputs. Pretty convenient shit
+while(scan.hasNextInt())
+{
+    int a=sc.nextInt();
+    System.out.println(a);
+}
+
+
+
+
+String class methods    (I think it's self explanatory enough)
+-----------------------------------------------------------------------------------------------------------------------
+Initializing a new String method:   String string; (thats it lmao)
+
+String.toUpperCase();               - returns a string with all upper cased text of String
+String.toLowerCase();               - returns a string with all lower cased text of String
+String.length();                     - returns an integer with the number of characters in String
+String.isEmpty();                   - returns a boolean that checks if there are characters (INCLUDING SPACES) in String
+String.isBlank();                   - returns a boolean that checks if there are characters EXCLUDING SPACES) in String
+String.charAt(int);                 - returns a char that is in the index number of the given int in String
+String.indexOf(char)                - returns an integer that represents the index number of the FIRST char in String with the same given char
+                                    Note: It returns -1 when there are no existing characters given in the string
+String.lastIndexOf(char)            - same as indexOf, but returns the LAST char in String with the same given char
+String.concat(string)               - returns a string that adds the given string to String
+
+
+
+Integer class methods (explanatory for selfs)
+-----------------------------------------------------------------------------------------------------------------------
+Initializing a new Integer method:   Integer integer; (thats it lmao)
+
+integer.toString(number, radix)     - converts a number to a string value according to radix n of number. 10 radix is base 10 (regular), 2 is binary (01)
+
+
+
+
+Point class methods     (The pointer of Java)
+-----------------------------------------------------------------------------------------------------------------------
+Initializing a new Point class:         Point pointer = new Point();
+
+
+
+
+Arrays class methods    (methods for arrays)
+-----------------------------------------------------------------------------------------------------------------------
+Arrays are a cluster of a specific data type or class that has a fixed size. Once you initialize an array variable, you must
+also assign either its size, or the values that it will contain. Although it's a bit tricky to use due to its fixed size,
+arrays are primitive data types, so it's much less memory-intensive than other classes with a similar function.
+
+
+Initializing Arrays class:  import java.util.Arrays;
+
+Let's assume an int[] variable:     int[] numbers = {5, 1, 0, -2, 4, -42, 3};
+
+Arrays.sort(numbers);           -sorts the array from lowest number to biggest ({-42, -2, 0, 1, 3, 4, 5})
+                                -also works with char arrays (Capital letters to small letters bc of unicode(or ASCII code??))
+                                -and works with string (literally the same function with char, but in strings)
+-also can work like this:
+Arrays.sort(numbers, 3, 7)      -same function before, but only sorts the values from array numbers[3] to numbers[7-1]. {5, 1, 0, -2, -42, 3, 4}
+
+Arrays.equals(numbers, anotherArray)        -returns a boolean that checks if both arrays in the arguments contain the same values
+-also can work like this:
+String a, b;   a.equals(b);                 -you can use it with strings or pointers, and directly call the method within the variable.
+
+Arrays.fill(numbers, value)                 -fills an array with the given value ({9, 9, 9, 9, 9, 9, 9, 9, 9} if input of value is 9)
+-also can work like this:
+Arrays.fill(numbers, fromIndex, toIndex, value)     -same before, but fromIndex represents where the fill starts and ends in toIndex
+
+Arrays.toString(numbers)                    -returns a string representation of the array. (I think you already know this)
+Arrays.deepToString(numbers[][])            -same shit, but used when dealing with 2D arrays
+
+
+List interface
+-----------------------------------------------------------------------------------------------------------------------
+Lists are basically a kind of array that allows you to freely add, edit, or delete elements. Considered a better version of an array due to
+its adaptability to change its size, It's an object type class, and it's a bit heavier than an array. List is an abstract class, and you cannot initialize 
+variables with it. Instead, you instantiate a class that implements this
+type. These classes are: ArrayList, LinkedList, Stack, Vector, and CopyOnWriteArrayList. I don't fucking know everything else, all I know is ArrayList,
+LinkedList, and Stack. And even then, I only really use ArrayList. You'll do just fine using just one of these classes, but for the time being,
+I'll only provide data for ArrayList.
+
+
+Initializing List Interface:  import java.util.List;
+
+Initializing ArrayList class: import java.util.ArrayList;
+NOTE: It's important to note that you really don't have to initialize the List interface, and you can just use ArrayList.
+
+
+creating a List variable:   List<DataType> list = new List<DataType>;
+
+ArrayList class methods:
+
+ArrayList.size();                 -size of list
+ArrayList.isEmpty();              -boolean to check if list is isEmpty
+ArrayList.contains(Object o);     -boolean to check if list contains specified element
+ArrayList.toArray();              -returns an array that contains all the elements within the list
+ArrayList.add(E e);               -adds a new element ot the list
+ArrayList.remove(Object o)        -removes the specified object within the list by its object value
+ArrayList.remove(int i)           -removes the specified object within the list by its index value
+ArrayList.clear();                -clears the list
+ArrayList.get(int index)          -gets the element of the specified position of the list
+ArrayList.set(int index)          -sets the element of the specified position of the list
+
+Example of Application:
+
+List<String> list = new ArrayList<String>(); (you could also just initialize like this:   ArrayList<String> list = new ArrayList<String>();)
+list.add("Aye");
+list.add("sup");
+list.add("bruh");
+list.add("eksdee");
+
+list.set(1) = "lmao"; //changes sup to lmao
+list.remove(0); //removes Aye
+list.remove("bruh"); //removes list index that contains bruh, which is 2.
+
+for(String a : list)
+    System.out.print(a);        //prints out each values of list, which is now only lmao and eksdee
+
+
+
+Map interface
+-----------------------------------------------------------------------------------------------------------------------
+Map is another sort of type of interface that stores data. However, this type does not have a set order of their elements, and
+instead of a fixed sequence, data is intead added and taken by using its key and object feature. You get a value by inputting that value's "key".
+Useful for when you want to define an object and return another object. Map has three classes that implements its type: HashMap, TreeMap, and
+LinkedHashMap. I don't fucking know anything else, but I've heard the term HashMap before, and apparently, its the one that is usually used by people,
+so, let's ignore the two classes and focus on HashMap
+
+
+Initializing Map Interface:  import java.util.Map;
+Initializing HashMap Interface:  import java.util.Map;
+//NOTE; again, like list, you don't have to initialize map import if you already have a hashmap class.
+
+instantiating a HashMap variable:   Map<DataType, Datatype> hashMap = new HashMap<DataType, DataType>(); (OR just Hasmap<> = new Hashmap<>*();)
+NOTE - The first datatype parameter of the hashmap is the "key" and the second parameter is the value.
+
+HashMap.put(key, value);                        -adds a new entry of a key and value
+HashMap.get(key);                               -returns the value of the entry with the specified key
+HashMap.keySet();                               -returns the list of all keys within the hashmap
+HashMap.values();                               -returns the list of all values within the hashmap
+HashMap.remove(key);                            -removes the value of the entry with the specified key
+HashMap.clear();                                -clears the HasMap
+HashMap.replace(key, newValue);                 -replace the value of the entry that has the specified key with the specified new value
+HashMap.containsKey(key)                        -returns a boolean of condition that the hashmap contains the specified key
+HashMap.containsValue(value)                    -returns a boolean of condition that the hashmap contains the specified value
+HashMap.size();                                 -returns a number of the size of the HashMap
+
+
+Example:
+
+Map<String, String> map = new HashMap<String, String>(); (you could also just initialize like this:   HashMap<> = new HashMap<>();)
+
+map.put("lmao", eksdee) ;       //sets entry with lmao key and eksdee value
+map.put("bruh", what) ;         //sets entry with bruh key and eksdee what value
+map.remove("lmao");            //removes entry with lmao key
+map.replace("bruh", "sksksk"); //replaces list with bruh key with sksksk value
+map.values();                   //prints out sksksk
+
+
+
+
+Collections class methods
+-----------------------------------------------------------------------------------------------------------------------
+
+Collections.sort(list/array/etc.);                                   -sorts a list
+Collections.sort(list/array/etc., Collections.reverseOrder());       -sorts a list in a descending order
+Collections.addAll(list/array/etc., "", "", ...)                     -adds all specified elements within the list
+
+
+ArrayList class methods     //Array with no fixed size
+-----------------------------------------------------------------------------------------------------------------------
+Initializing ArrayList object:              -ArrayList<String> yawa = new ArrayList<>();
+                                            //You could also use Integer, Double, etc., but not primitive types (int, char, double)
+
+yawa.add(value);            -Add elements to the created array          //yawa.add("yawuh"); - ["yawuh"]
+yawa.add(number, value);    -overloaded version of add function that adds the element in a specific index from the given number
+                            //yawa.add(0, "piste"); - ["piste", "yawuh"]    notice how "yawuh" is only shifted, not destr0y3d
+
+yawa.get(number);            -gets value by number of the array index    //yawa.get(0); - "piste"
+
+yawa.set(number, value);    -almost like add method, but instead replaces any values within the given index number
+                            //yawa.set(0, "gago"); - ["gago", "yawuh"]
+
+yawa.remove(number OR value);    -deletes a value in the array either by given index number or by given matching value
+                            //yawa.remove("yawuh" or 1) - ["gago"]
+
+yawa.clear();               -clears the array lmao  //yawa.clear(); - []
+yawa.size();                -shows the current size of the arraylist    //yawa.size(); - 0 olol gi clear nimo bubu
+
+yawa.contains(value)        -returns a boolean value that checks if the given value is within the arraylist. (you can even put primitive data types)
+                            //yawa.contains("bilat") - false,s
+
+Collections class methods   //Class method that fucks around with Lists
+-----------------------------------------------------------------------------------------------------------------------
+Initializing Collections class:        import Java.util.Collections;
+
+Collections.sort(list);     -sorts the array list in alphabetical or numerical order
+                            //String[] fucker {"yawa, "bogo", "atay"}; Collections.sort(fucker); - ["atay", "bogo", "yawa"]
+
+Collections.reverseOrder(); -Usually only passed as a parameter as far as I know, it reverses the order of the list
+                            //ArrayList<Integer> test = new ArrayList<>(); (it just apparently contains 1, 5, 2, 3, 4)
+                            //Collections.sort(test, Collections.reverseOrder()); - [5, 4, 3, 2, 1]
+
+
+
+
+Biginteger class	- adds infinite number of numbers by creating a string (woah)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Some cool shits:
+========================================================================================================================
+Loops
+
+Lots of ways to loop:
+
+for(int i = 0; i < 10; i++){}                 <= classic loop
+
+while(i < 10)                               <= while loop
+{ i++ }
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+Typecasts
+
+Typecasts converts datatypes to a much more primitive version of that datatype.
+For instance, you can typecast a Float variable to an Integer variable, so it now just an int.
+
+int x = (int) 3.1415;           <= a decimal value, but when typecasted, is treated as an integer, so the value is now 3.
+
+byte y = (byte) x;              <= typecasts integer x to an even more primitive data type, byte.
+
+------------------------------------------------------------------------------------------------------------------------
+Method Overloading: Defining 2 similar methods with different parameters.
+
+This way, you can call a single function that takes multiple parameters and automatically
+runs the method that properly contains the given params
+
+Ex:
+
+public static void sayTheNWord()            -Method 1
+{    System.out.println("NWord");       }
+
+public static void sayTheNWord(int x)       -Method 2
+{    System.out.println("NWord" + x);   }
+
+sayTheNWord();              -calls Method 1
+sayTheNWord(int x = 5);     -calls Method 2
+------------------------------------------------------------------------------------------------------------------------
+
+Array Initializers
+
+Initializing an array variable with just the size
+int numbers[] = new int[5];
+
+You could do this for insta array allocation:
+int numbers[] = {1, 2, 3, 4, 5};        //automatically allocates 5 spaces for the array as the braces contain 5 numbers
+
+you CANNOT do that method seperately like this:
+int numbers[];
+numbers = {1, 2, 3, 4, 5};
+
+You can also initialize an array without a variable referencing it
+new int[] {1, 2, 3, 4, 5};  //This is useful when you want to pass down an array value to a function clean, quick and ez
+
+Initializing double arrays
+int[][] numbers = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+------------------------------------------------------------------------------------------------------------------------
+
+Variable-Length Argument List
+It means when you create a function, you can put whatever amount of arguments in it
+
+public static coolShit(int... numbers){}    -number then becomes an array of int that contains all the provided arguments
+
+you could then use this function like:
+
+coolShit(15, 20, 1, 6);   OR  coolShit(1, 2, 3, 4, 5, 6, 7, 8, 9).  Whatever the size of the argument, it will take it.
+- You can even pass an array this way, no matter what size as well, and it will also work.
+- You can only have one variable-length variable though.  coolShit(int... number1, int... number2) does not
+------------------------------------------------------------------------------------------------------------------------
+
+Constructors
+
+Methods with the same name of the class so you can initialize an object of that class in another class lmao
+
+Class Circle 
+{
+    public Circle(){}         //The Circle(){} is the constructor. Notice that it has no data type and visibility modifiers
+} 
+
+------------------------------------------------------------------------------------------------------------------------
+
+Inheritance
+
+A subclass is a class that has access to another class' functions and variables. It's like an extention of a sort, or it "inherits" the other class.
+Useful if you want a class that does a whole bunch of shit, and a subclass that uses that class, but has a bit more specialization to it. A good example is chess pieces.
+You can create a class for Pieces itself, with variables like location and their states, and sublasses like Pawn, Rook, etc. that uses the piece class, but also has unique properties.
+It's just to avoid redundancy and putting the same function everytime in each class.
+
+example: 
+
+public class mainClass
+{
+    int a;
+    public mainClass(int a) { this.a = a; }
+
+}
+
+public class subClass extends mainClass
+{
+    public subClass(int a, int b)       //notice that subClass' constructor contains mainClass value a
+    {
+        super(a);                       //to initialize main class value a, you must explicitly invoke main class constructor using this function.
+        this.b = b;
+    }
+
+    int b = 2;
+
+    public void printValues(){
+        System.out.print(a + b);            //notice that variable a here is called as if it was already initialized, which it is, from mainClass.
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------
+
+Abstract Classes
+
+Abstract classes are classes that cannot be instantiated. Their whole purpose is to be a subclass of another class. Recall extends function.
+When creating a main class, and a subclass, you really didn't need to instantiate the main class, so you might as well call it an
+abstract class. Other than the fact that it cannot be instantiated, nothing much else is different from a regular class.
+
+public abstract class mainClass
+{
+    int a;
+
+    public mainClass(int a) { this.a = a; }
+
+    public abstract void print();           - Special feature of Abstract class: Abstract functions. Notice how the function is just blank.
+                                              When creating a subclass that extends this abstract class, you MUST create a void function 
+                                              also called print() in that subclass, otherwise, it will throw errors. It's like a reminder that a
+                                              a subclass needs this function
+
+    public void speak() { System.out.print("woof"); }   - Notice that this one is not an abstract function.
+}
+
+public class subClass extends mainClass
+{
+
+    public subClass(int a) { super(a); }
+
+    public void print() { System.out.print("aye"); }    - Remember, this subclass MUST have the print() function since there is an abstract function.
+
+    public void speak() { System.out.print("meow"); }   -Notice this one is another speak() function, overriding the original speak() from mainClass.
+
+                                                         If there is no speak() function in this subClass, it wouldn't cause errors. Only
+                                                         Abstract functions require mandatory definition. If you call speak() without having
+                                                         a speak() function in subClass, then it will call speak() function from mainClass
+    
+}
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+Data types
+========================================================================================================================
+final	-const of java
+0       -null in numbers
+\u0000  -null in char
+null    -null in reference types (pointers or array)
+
+

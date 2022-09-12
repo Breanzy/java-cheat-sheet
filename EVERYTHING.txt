@@ -99,9 +99,11 @@ Math class methods
 Math includes all sorts of mathematical functions. It is part of java.lang, and does not need to be imported.
 
 
-Math.round();                   <= Classic rounding, rounds number depending on the nearest decimal number
-Math.floor();                   <= Rounds a number downwards to the nearest integer
-Math.ceil();                    <= Rounds a number upwards to the nearest integer
+Math.round();                   - Classic rounding, rounds number depending on the nearest decimal number
+Math.floor();                   - Rounds a number downwards to the nearest integer
+Math.ceil();                    - Rounds a number upwards to the nearest integer
+
+Math.pow(a, b);                 - Rounds number value a to the power of number value b
 
 Scanner class methods
 -----------------------------------------------------------------------------------------------------------------------
@@ -154,14 +156,14 @@ Initializing a new String method:   String string; (thats it lmao)
 
 String.toUpperCase();               - returns a string with all upper cased text of String
 String.toLowerCase();               - returns a string with all lower cased text of String
-String.length();                     - returns an integer with the number of characters in String
+String.length();                    - returns an integer with the number of characters in String
 String.isEmpty();                   - returns a boolean that checks if there are characters (INCLUDING SPACES) in String
 String.isBlank();                   - returns a boolean that checks if there are characters EXCLUDING SPACES) in String
 String.charAt(int);                 - returns a char that is in the index number of the given int in String
-String.indexOf(char)                - returns an integer that represents the index number of the FIRST char in String with the same given char
+String.indexOf(char);               - returns an integer that represents the index number of the FIRST char in String with the same given char
                                     Note: It returns -1 when there are no existing characters given in the string
-String.lastIndexOf(char)            - same as indexOf, but returns the LAST char in String with the same given char
-String.concat(string)               - returns a string that adds the given string to String
+String.lastIndexOf(char);           - same as indexOf, but returns the LAST char in String with the same given char
+String.concat(string);              - returns a string that adds the given string to String
 
 
 
@@ -169,7 +171,9 @@ Integer class methods (explanatory for selfs)
 -----------------------------------------------------------------------------------------------------------------------
 Initializing a new Integer method:   Integer integer; (thats it lmao)
 
-integer.toString(number, radix)     - converts a number to a string value according to radix n of number. 10 radix is base 10 (regular), 2 is binary (01)
+integer.toString(number, radix);    - converts a number to a string value according to radix n of number. 10 radix is base 10 (regular), 2 is binary (01)
+
+integer.parseInteger("String");     - converts a string to an integer format value. 
 
 
 
@@ -215,9 +219,10 @@ List interface
 Lists are basically a kind of array that allows you to freely add, edit, or delete elements. Considered a better version of an array due to
 its adaptability to change its size, It's an object type class, and it's a bit heavier than an array. List is an abstract class, and you cannot initialize 
 variables with it. Instead, you instantiate a class that implements this
-type. These classes are: ArrayList, LinkedList, Stack, Vector, and CopyOnWriteArrayList. I don't fucking know everything else, all I know is ArrayList,
-LinkedList, and Stack. And even then, I only really use ArrayList. You'll do just fine using just one of these classes, but for the time being,
-I'll only provide data for ArrayList.
+type. These classes are: ArrayList, LinkedList, Stack, Vector, and CopyOnWriteArrayList. I don't know what the fuck vector and copyonwritearray lists are, 
+all I know is ArrayList, LinkedList, and Stack. And in most cases, you really only need to know just one type of list interface and you're pretty much
+all caught up. They have different methodologies, but in its core essense, functions the same. From what I've seen, LinkedList, ArrayList, and Stack are the
+most commonly used class for the List interface, so we'll be focusing on that
 
 
 Initializing List Interface:  import java.util.List;
@@ -225,6 +230,11 @@ Initializing List Interface:  import java.util.List;
 Initializing ArrayList class: import java.util.ArrayList;
 NOTE: It's important to note that you really don't have to initialize the List interface, and you can just use ArrayList.
 
+NOTE: About ArrayList. ArrayList, as its name suggests, is an Array that implements a List interface. Basically what happens is that an array now
+has the ability to increase or decrease in size. It's very efficient in accessing and storing values as you know, it's an array, and you just
+access or store data using index numbers of the array. But it's kind of slow when you change the list size since the process to do so involves
+creating a new array, pasting the data from the old array to the new one, and when the list get longer, so too does the process it takes to complete the task.
+But in general, ArrayList is pretty much the go-to List type class to use so yeah, get used to it.
 
 creating a List variable:   List<DataType> list = new List<DataType>;
 
@@ -256,6 +266,33 @@ list.remove("bruh"); //removes list index that contains bruh, which is 2.
 for(String a : list)
     System.out.print(a);        //prints out each values of list, which is now only lmao and eksdee
 
+
+LinkedList class methods:
+
+NOTE: About LinkedList - LinkedList implements Doubly Linked List to as its interface. Unlike ArrayList that uses an array and a list, LinkedList uses
+list and a queue. Doubly Linked List means creating an object named list, and inside that object contains 2 more objects of the same kind named nodes.
+These 2 nodes are called head and tail, and these nodes also contain their very own 2 nodes with another head and tail. A little visualization looks like this
+a <-> b <-> c
+so you see here, a is a list, and its tail is null, since there are no other list objects before it, and b is its head, since it comes after it. For b, a is 
+its tail and c is its head. You'll notice that unlike the arraylist that has index number as reference to the location of objects, linkedlist only relies
+on the head and tail nodes of each list object for their location. Like, to get the value of c, you start from a and get the second head from a. so b -> c.
+This is kind of slow when accessing files because it requires some type of process to get to an object, but it's really really fast in adding or removing list.
+You simply just change the node's head or tail. In general usage though, ArrayList is much used so yea, heads up for that.
+
+
+LinkedList.size();                  -size of list
+LinkedList.isEmpty();               -boolean to check if list is empty
+LinkedList.addLast(E e);            -adds whatever you want at the end of the list
+LinkedList.remove(int i)            -removes the specified object within the list by its index value (oh but it can also return the value of what was removed)
+LinkedList.get(int index)           -gets the element of the specified position of the list
+LinkedList.set(int index)           -sets the element of the specified position of the list
+
+Example of Application:
+
+LinkedList<String> test = new LinkedList<String>();
+test.addLast("aye");
+System.out.println(test.remove(0));       -Prints the object that was removed ("aye")
+ 
 
 
 Map interface
@@ -454,6 +491,7 @@ example:
 public class mainClass
 {
     int a;
+    int c = 5;                              //notice that c is already declared
     public mainClass(int a) { this.a = a; }
 
 }
@@ -462,15 +500,13 @@ public class subClass extends mainClass
 {
     public subClass(int a, int b)       //notice that subClass' constructor contains mainClass value a
     {
-        super(a);                       //to initialize main class value a, you must explicitly invoke main class constructor using this function.
-        this.b = b;
-    }
-
-    int b = 2;
+        super(a);                       //to initialize mainClass value a, you must explicitly invoke mainClass constructor using this function.
+        this.b = b;                     //NOTE: The only things that needs super() function are the values that are declared inside the constructor of
+    }                                           the inherited class
 
     public void printValues(){
-        System.out.print(a + b);            //notice that variable a here is called as if it was already initialized, which it is, from mainClass.
-    }
+        System.out.print(a + b + c);            //notice that variable a here is called as if it was already initialized, which it is, using super().
+    }                                             And also notice that we can already use c since it was also already initialized from declaration itself.
 }
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -478,7 +514,7 @@ public class subClass extends mainClass
 Abstract Classes
 
 Abstract classes are classes that cannot be instantiated. Their whole purpose is to be a subclass of another class. Recall extends function.
-When creating a main class, and a subclass, you really didn't need to instantiate the main class, so you might as well call it an
+When creating a main class and a subclass, and you dodn't need to instantiate the main class, you might as well call it an
 abstract class. Other than the fact that it cannot be instantiated, nothing much else is different from a regular class.
 
 public abstract class mainClass
@@ -514,11 +550,86 @@ public class subClass extends mainClass
 ------------------------------------------------------------------------------------------------------------------------
 
 
+Nested Classes
+
+Nested Classes are classes that are inside another class. They only exist when the class that encapsulates it (Outer Class) is
+instantiated. Because of this, Nested Classes develop dependencies on the Outer Class, so it's generally a bad idea to create one
+unless you really need to. Below is a demonstration on how to instantiate nested classes and how they look like.
+
+Example:
+
+public class OuterClass
+{
+    public class InnerClass         <== This is the Nested Class
+    {
+
+    }
+
+    public static void main(String[] args)
+    {
+        OuterClass outerClass = new OuterClass();
+
+        OuterClass.InnerClass = outerClass.new InnerClass();        <= This is how you declare an InnerClass
+
+        OuterClass.InnerClass = new OuterClass().new InnerClass();  <= You can also do it this way, instantiating a new OuterClass Object.
+    }
+}
+
+Instead, what you should do is create another .java file that contains the different Class.
+
+Example: 
+
+in Test1.java:
+public class Test1
+{
+
+}
+
+
+int Test2.java:
+public classTest2
+{
+    public static void main(String[] args)
+    {
+        Test1 test1 = new Test1();
+        Test2 test2 = new Test2();  <== notice that Test2 no longer needs to instantiate Test1, unlike before, since it is seperated from another file
+    }
+}
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
 Data types
 ========================================================================================================================
 final	-const of java
-0       -null in numbers
+0       -null in numbers (no it's not dumb fuck "numbers" does not have any null values)
 \u0000  -null in char
-null    -null in reference types (pointers or array)
+null    -null in reference types (pointers or array) or Class Objects
+
+
+
+Words of advice
+========================================================================================================================
+
+Try following naming conventions so you can pretend you know your shit:
+
+testName - for functions and for values
+
+TestName - for Classes
+
+TEST_NAME - for fixed / static values
+
+
+
+Avoid making multiple classes inside a single java file since it creates dependencies and is generally a bad practice.
+Instead, try seperating them in different files. It is really only acceptable when it's a simple, short, and lazy code.
+
+
+
+Functions are your friends. Try as much as possible to always break down processes into different smaller functions and not just creating one
+big function that does a whole bunch of shit. It increases complexity of the function and can become impossible to navigate with in the future for any
+modifications.
+
 
 
